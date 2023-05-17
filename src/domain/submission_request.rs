@@ -6,9 +6,9 @@ use validator::Validate;
 #[derive(Serialize, Deserialize, Validate)]
 #[serde(rename_all = "camelCase")]
 pub struct Review {
-    #[validate(range(min = 0, max = 5))]
+    #[validate(range(min = 0, max = 5, message = "Rating must be between 0 and 5"))]
     pub rating: u8,
-    #[validate(length(min = 1))]
+    #[validate(length(min = 20, message = "Review text must be at least 20 characters"))]
     pub review_text: String,
     pub title: String,
     pub user_nickname: String,
